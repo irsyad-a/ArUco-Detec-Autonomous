@@ -1,0 +1,4 @@
+/home/icad/Downloads/magang/build/CMakeFiles/cobaAja_kj.dir
+/home/icad/Downloads/magang/build/CMakeFiles/face_blur_detection.dir
+/home/icad/Downloads/magang/build/CMakeFiles/edit_cache.dir
+/home/icad/Downloads/magang/build/CMakeFiles/rebuild_cache.dir

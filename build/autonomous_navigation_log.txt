@@ -1,0 +1,114 @@
+
+
+=== NEW SESSION ===
+Start Time: 2025-11-06 20:10:38
+Camera: http://10.237.86.79:8080/video
+
+
+=== SESSION END ===
+End Time: 2025-11-06 20:11:05
+Total Markers Found: 1
+Total Markers Scanned: 1
+
+
+
+=== NEW SESSION ===
+Start Time: 2025-11-06 20:11:48
+Camera: http://10.237.86.79:8080/video
+
+
+=== SESSION END ===
+End Time: 2025-11-06 20:12:30
+Total Markers Found: 2
+Total Markers Scanned: 1
+
+
+
+=== NEW SESSION ===
+Start Time: 2025-11-06 20:13:15
+Camera: http://10.237.86.79:8080/video
+
+
+=== SESSION END ===
+End Time: 2025-11-06 20:14:20
+Total Markers Found: 2
+Total Markers Scanned: 1
+
+
+
+=== NEW SESSION ===
+Start Time: 2025-11-06 21:02:26
+Camera: http://10.237.86.79:8080/video
+
+
+=== SESSION END ===
+End Time: 2025-11-06 21:03:18
+Total Markers Found: 1
+Total Markers Scanned: 1
+
+
+
+=== NEW SESSION ===
+Start Time: 2025-11-10 20:22:26
+Camera: http://10.237.86.79:8080/video
+
+
+
+=== NEW SESSION ===
+Start Time: 2025-11-10 20:37:17
+Camera: http://10.237.86.79:8080/video
+
+========================================
+SCAN EVENT
+Timestamp: 2025-11-10 20:37:35
+Marker ID: 10
+Position: (1196, 736)
+Size: 421 px
+Status: SCANNED
+========================================
+
+
+
+=== NEW SESSION ===
+Start Time: 2025-11-10 20:41:07
+Camera: http://10.237.86.79:8080/video
+
+========================================
+SCAN EVENT
+Timestamp: 2025-11-10 20:41:39
+Marker ID: 9
+Position: (1156, 497)
+Size: 159 px
+Status: SCANNED
+========================================
+
+
+=== SESSION END ===
+End Time: 2025-11-10 20:41:42
+Total Markers Found: 1
+Total Markers Scanned: 0
+
+
+
+=== NEW SESSION ===
+Start Time: 2025-11-10 21:04:00
+Camera: http://10.237.86.79:8080/video
+
+
+
+=== NEW SESSION ===
+Start Time: 2025-11-10 21:05:55
+Camera: http://10.237.86.79:8080/video
+
+
+=== SESSION END ===
+End Time: 2025-11-10 21:06:37
+Total Markers Found: 1
+Total Markers Scanned: 1
+
+
+=== SESSION END ===
+End Time: 2025-11-10 21:07:04
+Total Markers Found: 1
+Total Markers Scanned: 1
+

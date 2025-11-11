@@ -34,15 +34,30 @@ int main(int argc, char *argv[])
     cv::VideoCapture cam;
     std::string cameraSource;
 
+    // ============================================
+    // KONFIGURASI IP CAMERA
+    // Ganti URL di bawah dengan URL IP Camera dari HP Anda
+    // Contoh: "http://192.168.1.100:8080/video"
+    // ============================================
+    std::string ipCameraURL = "http://10.237.86.79:8080/video";
+
     // Jika ada argument, gunakan sebagai path camera
     if (argc > 1)
     {
         cameraSource = argv[1];
         std::cout << "Mencoba membuka kamera dari path: " << cameraSource << std::endl;
 
-        // Cek apakah input adalah angka (camera index) atau path
-        if (cameraSource.find("/dev/video") != std::string::npos ||
-            cameraSource.find("/dev/") != std::string::npos)
+        // Cek apakah input adalah URL (IP Camera)
+        if (cameraSource.find("http://") != std::string::npos ||
+            cameraSource.find("https://") != std::string::npos ||
+            cameraSource.find("rtsp://") != std::string::npos)
+        {
+            // URL IP Camera atau RTSP stream
+            cam.open(cameraSource, cv::CAP_FFMPEG);
+        }
+        // Cek apakah input adalah path device
+        else if (cameraSource.find("/dev/video") != std::string::npos ||
+                 cameraSource.find("/dev/") != std::string::npos)
         {
             // Path langsung ke device camera (Linux)
             cam.open(cameraSource, cv::CAP_V4L2);
@@ -59,7 +74,8 @@ int main(int argc, char *argv[])
             catch (...)
             {
                 std::cout << "Error: Format input tidak valid!" << std::endl;
-                std::cout << "Gunakan: ./cobaAja_kj [camera_index] atau ./cobaAja_kj [path]" << std::endl;
+                std::cout << "Gunakan: ./cobaAja_kj [URL/camera_index/path]" << std::endl;
+                std::cout << "Contoh: ./cobaAja_kj http://192.168.1.100:8080/video" << std::endl;
                 std::cout << "Contoh: ./cobaAja_kj 0" << std::endl;
                 std::cout << "Contoh: ./cobaAja_kj /dev/video0" << std::endl;
                 return -1;
@@ -68,11 +84,22 @@ int main(int argc, char *argv[])
     }
     else
     {
-        // Default: gunakan camera index 0
-        std::cout << "Menggunakan kamera default (index 0)" << std::endl;
-        std::cout << "Untuk menggunakan kamera lain, jalankan: ./cobaAja_kj [camera_index atau path]" << std::endl;
-        cam.open(0);
-        cameraSource = "Camera Index: 0";
+        // Default: gunakan IP Camera dari HP
+        std::cout << "==================================" << std::endl;
+        std::cout << "Menggunakan IP Camera dari HP" << std::endl;
+        std::cout << "URL: " << ipCameraURL << std::endl;
+        std::cout << "==================================" << std::endl;
+        std::cout << "\nTips:" << std::endl;
+        std::cout << "1. Pastikan HP dan komputer terhubung ke WiFi yang sama" << std::endl;
+        std::cout << "2. Buka aplikasi IP Camera di HP Anda" << std::endl;
+        std::cout << "3. Catat URL yang ditampilkan di aplikasi" << std::endl;
+        std::cout << "4. Edit file cobaa.cpp, ubah variabel ipCameraURL" << std::endl;
+        std::cout << "\nUntuk menggunakan kamera lain:" << std::endl;
+        std::cout << "  ./cobaAja_kj [URL/camera_index/path]" << std::endl;
+        std::cout << "==================================" << std::endl;
+
+        cam.open(ipCameraURL, cv::CAP_FFMPEG);
+        cameraSource = "IP Camera: " + ipCameraURL;
     }
 
     if (!cam.isOpened())

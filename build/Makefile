@@ -142,6 +142,80 @@ face_blur_detection/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/face_blur_detection.dir/build.make CMakeFiles/face_blur_detection.dir/build
 .PHONY : face_blur_detection/fast
 
+#=============================================================================
+# Target rules for targets named aruco_detection
+
+# Build rule for target.
+aruco_detection: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aruco_detection
+.PHONY : aruco_detection
+
+# fast build rule for target.
+aruco_detection/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aruco_detection.dir/build.make CMakeFiles/aruco_detection.dir/build
+.PHONY : aruco_detection/fast
+
+#=============================================================================
+# Target rules for targets named autonomous_aruco
+
+# Build rule for target.
+autonomous_aruco: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 autonomous_aruco
+.PHONY : autonomous_aruco
+
+# fast build rule for target.
+autonomous_aruco/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/autonomous_aruco.dir/build.make CMakeFiles/autonomous_aruco.dir/build
+.PHONY : autonomous_aruco/fast
+
+src/aruco_detection.o: src/aruco_detection.cpp.o
+.PHONY : src/aruco_detection.o
+
+# target to build an object file
+src/aruco_detection.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aruco_detection.dir/build.make CMakeFiles/aruco_detection.dir/src/aruco_detection.cpp.o
+.PHONY : src/aruco_detection.cpp.o
+
+src/aruco_detection.i: src/aruco_detection.cpp.i
+.PHONY : src/aruco_detection.i
+
+# target to preprocess a source file
+src/aruco_detection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aruco_detection.dir/build.make CMakeFiles/aruco_detection.dir/src/aruco_detection.cpp.i
+.PHONY : src/aruco_detection.cpp.i
+
+src/aruco_detection.s: src/aruco_detection.cpp.s
+.PHONY : src/aruco_detection.s
+
+# target to generate assembly for a file
+src/aruco_detection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aruco_detection.dir/build.make CMakeFiles/aruco_detection.dir/src/aruco_detection.cpp.s
+.PHONY : src/aruco_detection.cpp.s
+
+src/autonomous_aruco.o: src/autonomous_aruco.cpp.o
+.PHONY : src/autonomous_aruco.o
+
+# target to build an object file
+src/autonomous_aruco.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/autonomous_aruco.dir/build.make CMakeFiles/autonomous_aruco.dir/src/autonomous_aruco.cpp.o
+.PHONY : src/autonomous_aruco.cpp.o
+
+src/autonomous_aruco.i: src/autonomous_aruco.cpp.i
+.PHONY : src/autonomous_aruco.i
+
+# target to preprocess a source file
+src/autonomous_aruco.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/autonomous_aruco.dir/build.make CMakeFiles/autonomous_aruco.dir/src/autonomous_aruco.cpp.i
+.PHONY : src/autonomous_aruco.cpp.i
+
+src/autonomous_aruco.s: src/autonomous_aruco.cpp.s
+.PHONY : src/autonomous_aruco.s
+
+# target to generate assembly for a file
+src/autonomous_aruco.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/autonomous_aruco.dir/build.make CMakeFiles/autonomous_aruco.dir/src/autonomous_aruco.cpp.s
+.PHONY : src/autonomous_aruco.cpp.s
+
 src/cobaa.o: src/cobaa.cpp.o
 .PHONY : src/cobaa.o
 
@@ -198,8 +272,16 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... aruco_detection"
+	@echo "... autonomous_aruco"
 	@echo "... cobaAja_kj"
 	@echo "... face_blur_detection"
+	@echo "... src/aruco_detection.o"
+	@echo "... src/aruco_detection.i"
+	@echo "... src/aruco_detection.s"
+	@echo "... src/autonomous_aruco.o"
+	@echo "... src/autonomous_aruco.i"
+	@echo "... src/autonomous_aruco.s"
 	@echo "... src/cobaa.o"
 	@echo "... src/cobaa.i"
 	@echo "... src/cobaa.s"

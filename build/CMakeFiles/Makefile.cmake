@@ -51,4 +51,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/cobaAja_kj.dir/DependInfo.cmake"
   "CMakeFiles/face_blur_detection.dir/DependInfo.cmake"
+  "CMakeFiles/aruco_detection.dir/DependInfo.cmake"
+  "CMakeFiles/autonomous_aruco.dir/DependInfo.cmake"
   )

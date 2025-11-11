@@ -8,5 +8,15 @@
   "directory": "/home/icad/Downloads/magang/build",
   "command": "/usr/bin/c++  -isystem /usr/include/opencv4  -o CMakeFiles/face_blur_detection.dir/src/face_blur_detection.cpp.o -c /home/icad/Downloads/magang/src/face_blur_detection.cpp",
   "file": "/home/icad/Downloads/magang/src/face_blur_detection.cpp"
+},
+{
+  "directory": "/home/icad/Downloads/magang/build",
+  "command": "/usr/bin/c++  -isystem /usr/include/opencv4  -o CMakeFiles/aruco_detection.dir/src/aruco_detection.cpp.o -c /home/icad/Downloads/magang/src/aruco_detection.cpp",
+  "file": "/home/icad/Downloads/magang/src/aruco_detection.cpp"
+},
+{
+  "directory": "/home/icad/Downloads/magang/build",
+  "command": "/usr/bin/c++  -isystem /usr/include/opencv4  -o CMakeFiles/autonomous_aruco.dir/src/autonomous_aruco.cpp.o -c /home/icad/Downloads/magang/src/autonomous_aruco.cpp",
+  "file": "/home/icad/Downloads/magang/src/autonomous_aruco.cpp"
 }
 ]

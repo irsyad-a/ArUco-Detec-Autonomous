@@ -1,0 +1,226 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║              🚀 QUICK REFERENCE - MAGANG PROJECT 🚀               ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════
+  ⚡ QUICK COMMANDS
+═══════════════════════════════════════════════════════════════════
+
+LAUNCH AUTONOMOUS (Recommended):
+  ./start_autonomous.sh                    ← Termudah!
+
+LAUNCH ARUCO BASIC:
+  ./run_aruco.sh
+
+MAIN MENU (Semua Program):
+  cd autonomous_system && ./main_menu.sh
+
+CONFIG IP CAMERA:
+  cd autonomous_system && ./config_ip_camera.sh
+
+GENERATE MARKERS:
+  python3 generate_aruco.py
+
+═══════════════════════════════════════════════════════════════════
+  📁 FOLDER STRUCTURE
+═══════════════════════════════════════════════════════════════════
+
+📁 autonomous_system/       ← File autonomous navigation (BARU!)
+   └─ Semua docs & scripts untuk autonomous
+
+📁 src/                     ← Source code
+   └─ autonomous_aruco.cpp  ← Program utama
+
+📁 build/                   ← Compiled binaries
+   └─ autonomous_aruco      ← Executable
+
+📁 aruco_markers/           ← Generated markers
+   └─ Print & gunakan untuk testing
+
+═══════════════════════════════════════════════════════════════════
+  📖 DOKUMENTASI
+═══════════════════════════════════════════════════════════════════
+
+AUTONOMOUS NAVIGATION:
+  📁 autonomous_system/
+     ├─ GETTING_STARTED.txt         ← ⭐ START HERE!
+     ├─ README_AUTONOMOUS.md        ← Full guide
+     ├─ AUTONOMOUS_QUICK_START.md   ← Quick start
+     └─ SYSTEM_OVERVIEW.md          ← System overview
+
+ARUCO BASIC:
+  📖 README_ARUCO.md                ← Main docs
+  📖 ARUCO_COMPLETE_GUIDE.md        ← Complete guide
+  📖 ARUCO_QUICK_START.md           ← Quick start
+
+FILE ORGANIZATION:
+  📖 FILE_ORGANIZATION.md           ← File structure guide
+
+MAIN ENTRY:
+  📖 README.md                      ← Start here!
+
+═══════════════════════════════════════════════════════════════════
+  🎯 GETTING STARTED (3 STEPS)
+═══════════════════════════════════════════════════════════════════
+
+1. GENERATE MARKERS:
+   python3 generate_aruco.py
+   → Print 5-10 markers (minimal 5x5 cm)
+
+2. SETUP CAMERA (optional):
+   cd autonomous_system
+   ./config_ip_camera.sh
+   → Atau skip, gunakan webcam
+
+3. LAUNCH:
+   ./start_autonomous.sh
+   → Follow instruksi di Navigation Panel!
+
+═══════════════════════════════════════════════════════════════════
+  🔧 BUILD & COMPILE
+═══════════════════════════════════════════════════════════════════
+
+COMPILE ALL:
+  cd build
+  cmake ..
+  make
+
+COMPILE AUTONOMOUS ONLY:
+  cd build
+  make autonomous_aruco
+
+CLEAN BUILD:
+  cd build
+  rm -rf *
+  cmake ..
+  make
+
+═══════════════════════════════════════════════════════════════════
+  🐛 TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════
+
+IP CAMERA TIDAK CONNECT:
+  → cd autonomous_system && ./config_ip_camera.sh
+  → Test URL di browser: http://IP:8080/video
+  → HP & laptop harus WiFi sama
+
+MARKER TIDAK TERDETEKSI:
+  → Tambah cahaya ruangan
+  → Print ulang dengan quality bagus
+  → Jarak 20-200 cm dari marker
+
+PROGRAM ERROR:
+  → cd build && rm -rf * && cmake .. && make
+
+BUTUH BANTUAN:
+  → Baca: autonomous_system/GETTING_STARTED.txt
+  → Baca: autonomous_system/README_AUTONOMOUS.md
+  → Baca: FILE_ORGANIZATION.md
+
+═══════════════════════════════════════════════════════════════════
+  📊 PROGRAM YANG TERSEDIA
+═══════════════════════════════════════════════════════════════════
+
+1. 🤖 Autonomous ArUco Navigation  ⭐ BARU!
+   → Semi-autonomous dengan smart guidance
+   → Launch: ./start_autonomous.sh
+
+2. 🎯 Basic ArUco Detection
+   → Deteksi marker dengan logging
+   → Launch: ./run_aruco.sh
+
+3. 😊 Face Blur Detection
+   → Blur wajah otomatis
+   → Launch: cd build && ./face_blur_detection
+
+4. ⚫ Black Object Detection
+   → Deteksi objek hitam
+   → Launch: cd build && ./cobaAja_kj
+
+═══════════════════════════════════════════════════════════════════
+  ⌨️  KEYBOARD CONTROLS (Autonomous)
+═══════════════════════════════════════════════════════════════════
+
+S     → SCAN marker (saat LOCKED 🟢)
+R     → RESET target
+Q     → KELUAR
+ESC   → KELUAR
+
+═══════════════════════════════════════════════════════════════════
+  🎨 STATUS ROBOT (Autonomous)
+═══════════════════════════════════════════════════════════════════
+
+🟠 SCANNING     → Mencari marker
+🟡 TRACKING     → Mengikuti marker
+🔵 APPROACHING  → Mendekati marker
+🟢 LOCKED       → Siap scan!
+
+═══════════════════════════════════════════════════════════════════
+  📝 USEFUL PATHS
+═══════════════════════════════════════════════════════════════════
+
+Project Root:
+  /home/icad/Downloads/magang/
+
+Autonomous Files:
+  /home/icad/Downloads/magang/autonomous_system/
+
+Source Code:
+  /home/icad/Downloads/magang/src/autonomous_aruco.cpp
+
+Executable:
+  /home/icad/Downloads/magang/build/autonomous_aruco
+
+Log File:
+  /home/icad/Downloads/magang/build/autonomous_navigation_log.txt
+
+Markers:
+  /home/icad/Downloads/magang/aruco_markers/
+
+═══════════════════════════════════════════════════════════════════
+  💡 TIPS
+═══════════════════════════════════════════════════════════════════
+
+✅ Selalu mulai dari README.md (root)
+✅ Dokumentasi autonomous di folder autonomous_system/
+✅ Gunakan start_autonomous.sh untuk quick launch
+✅ Main menu: cd autonomous_system && ./main_menu.sh
+✅ Generate markers sebelum mulai testing
+✅ Print marker minimal 5x5 cm
+✅ Pencahayaan cukup terang
+✅ Gerakan smooth & tunggu update sistem
+
+═══════════════════════════════════════════════════════════════════
+  🔗 USEFUL COMMANDS
+═══════════════════════════════════════════════════════════════════
+
+# View file structure
+tree -L 2 -I 'build|CMakeFiles'
+
+# Find all documentation
+find . -name "*.md" -o -name "*.txt" | grep -v build
+
+# View logs
+tail -f build/autonomous_navigation_log.txt
+
+# Check executable
+ls -lh build/autonomous_aruco
+
+# List markers
+ls -lh aruco_markers/
+
+# View autonomous docs
+cat autonomous_system/GETTING_STARTED.txt
+less autonomous_system/README_AUTONOMOUS.md
+
+═══════════════════════════════════════════════════════════════════
+
+🎉 Quick Reference - Simpan file ini untuk akses cepat! 🎉
+
+═══════════════════════════════════════════════════════════════════
+
+Last Updated: November 2025
+Version: 2.0.0
+

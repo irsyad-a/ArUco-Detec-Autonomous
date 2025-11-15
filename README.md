@@ -1,102 +1,75 @@
-# 🤖 Magang Project - Computer Vision System
+# 🤖 Autonomous Rover - Computer Vision System
 
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.x-blue.svg)](https://opencv.org/)
 [![C++](https://img.shields.io/badge/C++-17-green.svg)](https://isocpp.org/)
 [![CMake](https://img.shields.io/badge/CMake-3.0+-red.svg)](https://cmake.org/)
-[![License](https://img.shields.io/badge/License-Educational-yellow.svg)]()
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)]()
 
-Kumpulan program Computer Vision untuk deteksi objek, ArUco markers, dan navigasi semi-autonomous menggunakan OpenCV.
+Sistem navigasi autonomous rover dengan line following, ArUco marker detection, dan obstacle avoidance menggunakan OpenCV dan STM32/Arduino integration.
 
 ---
 
 ## 🚀 Quick Start
 
-### 1️⃣ Jalankan Main Menu (Recommended)
+### Jalankan Autonomous Rover
 
 ```bash
-cd /home/icad/Downloads/magang/autonomous_system
-./main_menu.sh
-```
+# Compile project
+cd build
+cmake ..
+make autonomous_rover -j$(nproc)
 
-Menu interaktif akan muncul dengan pilihan semua program dan tools.
+# Run dengan webcam
+./autonomous_rover
 
-### 2️⃣ Atau Jalankan Program Langsung
+# Atau gunakan script
+cd ..
+./scripts/run_rover.sh
 
-**Autonomous Navigation (⭐ Recommended):**
-```bash
-# Dari root folder
-./start_autonomous.sh
-
-# Atau dari folder autonomous_system
-cd autonomous_system
-./run_autonomous.sh
-```
-
-**Basic ArUco Detection:**
-```bash
-./run_aruco.sh
+# Run dengan custom camera URL
+./scripts/run_rover.sh http://192.168.1.100:8080/video
 ```
 
 ---
 
-## 📦 Program yang Tersedia
+## ✨ Fitur Utama
 
-| # | Program | Deskripsi | Status |
-|---|---------|-----------|--------|
-| 1 | 🤖 **Autonomous ArUco Navigation** | Sistem navigasi semi-autonomous dengan panduan cerdas | ⭐ NEW! |
-| 2 | 🎯 **ArUco Detection** | Deteksi ArUco markers dengan logging & notification | ✅ Ready |
-| 3 | 😊 **Face Blur Detection** | Deteksi wajah dengan efek blur otomatis | ✅ Ready |
-| 4 | ⚫ **Black Object Detection** | Deteksi objek berwarna hitam | ✅ Ready |
+### 🤖 Autonomous Rover System
 
----
+- 🔍 **Line Following** - White & yellow line detection dengan HSV filtering
+- 🎯 **ArUco Marker Navigation** - Detection, tracking, dan decision making
+- 🚧 **Obstacle Detection** - Black object detection untuk menghindari halangan
+- 🎨 **Boundary Detection** - Edge detection untuk mencegah keluar jalur
+- 🔊 **Voice Guidance (eSpeak)** - Text-to-speech untuk notifikasi realtime
+- 📊 **Decision Logging** - CSV logging untuk analisis performa
+- 🤝 **Robot Integration** - Serial communication dengan STM32/Arduino via HC-05 Bluetooth
+- � **Smart Control** - Toggle-based command system untuk kontrol robot
 
-## 🌟 Featured: Autonomous Navigation System
+### 🧩 Modular Architecture
 
-**Sistem navigasi semi-autonomous** yang menggunakan ArUco markers untuk memandu operator secara cerdas.
+- **Path Planner** - A\* pathfinding algorithm
+- **Obstacle Detector** - Real-time obstacle detection
+- **Robot Bridge** - Hardware abstraction layer
+- **Serial Transport** - Reliable serial communication
+- **YOLO Detector** - Optional YOLOv5 object detection (jika ONNX Runtime tersedia)
 
-### ✨ Fitur Utama:
-- 🔍 **Auto-Scanning Mode** - Mencari markers otomatis
-- 🧭 **Smart Navigation** - Instruksi arah yang jelas (kiri/kanan/maju/mundur)
-- 📱 **IP Camera Support** - Gunakan HP sebagai kamera
-- 🎯 **Target Tracking** - Mengunci dan mengikuti marker
-- 📊 **Dual Display** - Camera view + Navigation panel terpisah
-- 🎨 **Visual Feedback** - Indikator status yang jelas
+### 🎛️ Configuration System
 
-### 🎮 Cara Kerja:
-1. **SCANNING** 🟠 - Sistem mencari marker di lingkungan
-2. **TRACKING** 🟡 - Mengikuti marker yang terdeteksi
-3. **APPROACHING** 🔵 - Mendekati marker
-4. **LOCKED** 🟢 - Siap untuk scan!
-
-### 📖 Dokumentasi:
-- 📘 [README_AUTONOMOUS.md](README_AUTONOMOUS.md) - Full documentation
-- ⚡ [AUTONOMOUS_QUICK_START.md](AUTONOMOUS_QUICK_START.md) - Quick start guide
+- YAML-based configuration (`config/rover_config.yaml`)
+- Runtime parameter tuning
+- Multiple camera source support (webcam, IP camera, video file)
 
 ---
 
-## 📖 Dokumentasi Lengkap
+## 📖 Dokumentasi
 
-### 🎯 System Overview
-- **[SYSTEM_OVERVIEW.md](autonomous_system/SYSTEM_OVERVIEW.md)** ← Start here! 🌟
-  - Ringkasan semua program
-  - Struktur folder
-  - Comparison table
-  - Best practices
+### 🎯 Rover Integration
 
-### 🤖 Autonomous Navigation
-- **[📁 autonomous_system/](autonomous_system/)** - **Folder khusus untuk sistem autonomous** ⭐
-- **[README_AUTONOMOUS.md](autonomous_system/README_AUTONOMOUS.md)** - Full guide dengan semua detail
-- **[AUTONOMOUS_QUICK_START.md](autonomous_system/AUTONOMOUS_QUICK_START.md)** - 3 langkah mudah untuk mulai
-- **[GETTING_STARTED.txt](autonomous_system/GETTING_STARTED.txt)** - Panduan lengkap memulai
-
-### 🎯 ArUco Detection
-- **[README_ARUCO.md](README_ARUCO.md)** - Panduan lengkap
-- **[ARUCO_QUICK_START.md](ARUCO_QUICK_START.md)** - Quick start
-- **[ARUCO_COMPLETE_GUIDE.md](ARUCO_COMPLETE_GUIDE.md)** - Complete guide
-- **[LOGGING_FEATURE.md](LOGGING_FEATURE.md)** - Logging system
-
-### 😊 Other Features
-- **[README_FACE_BLUR.md](README_FACE_BLUR.md)** - Face blur detection
+- **[ROVER_INTEGRATION.md](docs/ROVER_INTEGRATION.md)** - Panduan integrasi robot
+- **[ROVER_QUICK_START.md](docs/ROVER_QUICK_START.md)** - Quick start guide
+- **[STM32_INTEGRATION.md](docs/STM32_INTEGRATION.md)** - STM32 integration details
+- **[STM32_ELECTRICAL_GUIDE.md](docs/STM32_ELECTRICAL_GUIDE.md)** - Wiring dan setup hardware
+- **[PROGRAMMER_NEXT_STEPS.md](docs/PROGRAMMER_NEXT_STEPS.md)** - Development guide
 
 ---
 
@@ -111,31 +84,66 @@ sudo apt-get install -y \
     libopencv-contrib-dev \
     cmake \
     g++ \
-    build-essential
+    build-essential \
+    espeak \
+    libespeak-dev
 ```
 
-### Compile Programs
+> **Note:** eSpeak + libespeak-dev diperlukan untuk fitur Text-to-Speech (TTS).
+
+### Optional: ONNX Runtime (untuk YOLOv5 Detection)
 
 ```bash
-cd /home/icad/Downloads/magang/build
+# Download ONNX Runtime
+wget https://github.com/microsoft/onnxruntime/releases/download/v1.16.0/onnxruntime-linux-x64-1.16.0.tgz
+tar -xzf onnxruntime-linux-x64-1.16.0.tgz
+sudo cp -r onnxruntime-linux-x64-1.16.0/include/* /usr/local/include/
+sudo cp -r onnxruntime-linux-x64-1.16.0/lib/* /usr/local/lib/
+sudo ldconfig
+```
+
+### Compile Project
+
+```bash
+# Clone repository
+git clone https://github.com/irsyad-a/ArUco-Detec-Autonomous.git
+cd ArUco-Detec-Autonomous
+
+# Create build directory
+mkdir -p build
+cd build
+
+# Configure and compile
 cmake ..
-make
-```
-
-Atau gunakan main menu:
-```bash
-./main_menu.sh
-# Pilih opsi 8 (Compile All Programs)
+make autonomous_rover -j$(nproc)
 ```
 
 ### Verify Installation
 
 ```bash
 cd build
-ls -lh autonomous_aruco aruco_detection face_blur_detection cobaAja_kj
+ls -lh autonomous_rover
+./autonomous_rover --help
 ```
 
-Semua file executable harus ada.
+### Voice Guidance
+
+Saat menjalankan `autonomous_rover`, Anda akan mendapat prompt:
+
+```
+Aktifkan suara deteksi? [Y/n]:
+```
+
+- Tekan **Enter** atau `y` untuk mengaktifkan TTS
+- Masukkan `n` untuk mode silent
+
+### HC-05 Bluetooth Control
+
+Sistem menggunakan metode **toggle control**:
+
+- Karakter `w`, `a`, `s`, `d`, `q`, `e`, `g`, `p` akan toggle ON/OFF
+- Sistem otomatis mematikan perintah lama sebelum aktivasi perintah baru
+- Instruksi STOP mengirim ulang karakter yang sama
 
 ---
 
@@ -145,110 +153,103 @@ Semua file executable harus ada.
 
 1. **Download** "IP Webcam" dari Play Store
 2. **Buka app** → Scroll down → **"Start server"**
-3. **Catat URL** (contoh: `http://10.237.86.79:8080/video`)
-4. **Configure:**
+3. **Catat URL** (contoh: `http://192.168.1.100:8080/video`)
+4. **Run dengan URL:**
    ```bash
-   ./config_ip_camera.sh
+   ./scripts/run_rover.sh http://192.168.1.100:8080/video
    ```
-5. **Masukkan URL** yang didapat dari HP
-6. **Done!** ✅
 
-### Manual Configuration:
+### Configuration File
 
-Edit file `src/autonomous_aruco.cpp` atau `src/aruco_detection.cpp`:
+Edit `config/rover_config.yaml`:
 
-```cpp
-std::string ipCameraURL = "http://YOUR_IP:8080/video";
-```
-
-Lalu compile ulang:
-```bash
-cd build && cmake .. && make
+```yaml
+camera:
+  source: "http://192.168.1.100:8080/video" # IP camera URL
+  # source: 0  # or use webcam
+  width: 640
+  height: 480
+  fps: 30
 ```
 
 ---
 
 ## 🎮 Usage Examples
 
-### Example 1: Autonomous Navigation
+### Example 1: Run dengan Webcam
 
 ```bash
-# Launch dengan quick launcher
-./start_autonomous.sh
-
-# Atau dari folder autonomous_system
-cd autonomous_system
-./run_autonomous.sh
-
-# Atau direct run dengan options
+./scripts/run_rover.sh
+# Atau
 cd build
-./autonomous_aruco 0  # Webcam
-./autonomous_aruco "http://192.168.1.100:8080/video"  # Custom IP
+./autonomous_rover
 ```
 
-**Output:**
-- Window 1: Camera feed dengan marker detection
-- Window 2: Navigation panel dengan instruksi besar
-
-**Instruksi yang muncul:**
-- "PUTAR KIRI 20°" → Putar badan ke kiri
-- "MAJU 15 cm" → Maju beberapa langkah
-- "LOCKED! - Tekan 'SCAN' (S)" → Tekan S untuk scan
-
-### Example 2: Basic ArUco Detection
+### Example 2: Run dengan IP Camera
 
 ```bash
-./run_aruco.sh
-# Pilih sumber kamera
-# Program akan mendeteksi dan log semua marker
+./scripts/run_rover.sh http://192.168.1.100:8080/video
 ```
 
-**Keyboard Controls:**
-- `s` → Screenshot
-- `l` → Lihat log summary
-- `g` → Generate markers
-- `q` → Keluar
-
-### Example 3: Generate ArUco Markers
+### Example 3: Run dengan Video File
 
 ```bash
-python3 generate_aruco.py
-# Markers tersimpan di folder aruco_markers/
-# Print dan gunakan untuk testing
+cd build
+./autonomous_rover /path/to/video.mp4
 ```
+
+### Keyboard Controls
+
+Saat program berjalan:
+
+- `q` - Quit/keluar dari program
+- `r` - Reset decision state
+- `m` - Toggle map window
+- `d` - Toggle debug mode
+- `v` - Toggle verbose logging
+- `s` - Save screenshot
+- `p` - Pause/resume
+
+### Robot Commands (via Serial/Bluetooth)
+
+Jika terhubung dengan robot via HC-05:
+
+- `w` - Maju (Forward)
+- `s` - Mundur (Backward)
+- `a` - Belok kiri (Turn Left)
+- `d` - Belok kanan (Turn Right)
+- `q` - Rotate kiri (Rotate Left)
+- `e` - Rotate kanan (Rotate Right)
+- `g` - Stop semua motor
+- `p` - Pause toggle
 
 ---
 
-## 🔧 Tools & Utilities
+## 🔧 Scripts & Tools
 
-### 1. Main Menu (`main_menu.sh`)
-Menu interaktif untuk semua program dan tools.
+### 1. Run Rover (`scripts/run_rover.sh`)
+
+Main script untuk compile dan run autonomous rover.
 
 ```bash
-cd autonomous_system
-./main_menu.sh
+./scripts/run_rover.sh [camera_url]
 ```
 
-### 2. Config IP Camera (`config_ip_camera.sh`)
-Update IP camera URL tanpa edit kode.
+### 2. Send Character via Bluetooth (`scripts/send_char.sh`)
+
+Kirim single character command ke robot via serial/bluetooth.
 
 ```bash
-cd autonomous_system
-./config_ip_camera.sh
+./scripts/send_char.sh w  # Forward
+./scripts/send_char.sh s  # Backward
 ```
 
-### 3. Generate Markers (`generate_aruco.py`)
-Generate ArUco markers untuk testing.
+### 3. Setup Bluetooth (`scripts/setup_bluetooth.sh`)
+
+Setup dan konfigurasi HC-05 Bluetooth module.
 
 ```bash
-python3 generate_aruco.py
-```
-
-### 4. View Logs (`view_log.py`)
-View detection logs dengan format rapi.
-
-```bash
-python3 view_log.py
+./scripts/setup_bluetooth.sh
 ```
 
 ---
@@ -256,385 +257,506 @@ python3 view_log.py
 ## 📊 Project Structure
 
 ```
-/home/icad/Downloads/magang/
+ArUco-Detec-Autonomous/
 │
 ├── 📁 src/                          # Source code
-│   ├── autonomous_aruco.cpp         # ⭐ Autonomous navigation
-│   ├── aruco_detection.cpp          # Basic ArUco detection
-│   ├── face_blur_detection.cpp      # Face blur
-│   └── cobaa.cpp                    # Black object detection
+│   ├── autonomous_rover.cpp         # ⭐ Main autonomous system
+│   ├── robot_bridge.{cpp,hpp}       # Robot hardware abstraction
+│   ├── serial_transport.{cpp,hpp}   # Serial communication
+│   ├── path_planner.{cpp,hpp}       # A* pathfinding
+│   ├── obstacle_detector.{cpp,hpp}  # Obstacle detection
+│   ├── yolo_detector.{cpp,hpp}      # YOLO object detection
+│   └── command_protocol.hpp         # Command definitions
 │
 ├── 📁 build/                        # Compiled binaries
-│   ├── autonomous_aruco             # ⭐ Main program
-│   ├── aruco_detection
-│   ├── face_blur_detection
-│   └── cobaAja_kj
+│   ├── autonomous_rover             # ⭐ Main executable
+│   ├── autonomous_navigation_log.txt
+│   ├── decisions_log.csv
+│   └── visited_markers.json
 │
-├── 📁 aruco_markers/                # Generated markers
-│   └── aruco_marker_*.png
+├── 📁 config/                       # Configuration files
+│   ├── rover_config.yaml            # Main config
+│   └── rover_config_examples.yaml   # Example configs
 │
-├── 📁 autonomous_system/            # ⭐ NEW! Autonomous system files
-│   ├── 📖 README.md                 # Index untuk folder ini
-│   ├── 📖 README_AUTONOMOUS.md      # Full documentation
-│   ├── 📖 AUTONOMOUS_QUICK_START.md # Quick start guide
-│   ├── 📖 SYSTEM_OVERVIEW.md        # System overview
-│   ├── 📄 GETTING_STARTED.txt       # Getting started
-│   ├── 🚀 main_menu.sh              # Main launcher
-│   ├── 🚀 run_autonomous.sh         # Autonomous launcher
-│   └── 🚀 config_ip_camera.sh       # Config tool
+├── � docs/                         # Documentation
+│   ├── ROVER_INTEGRATION.md         # Integration guide
+│   ├── ROVER_QUICK_START.md         # Quick start
+│   ├── STM32_INTEGRATION.md         # STM32 guide
+│   ├── STM32_ELECTRICAL_GUIDE.md    # Wiring guide
+│   └── PROGRAMMER_NEXT_STEPS.md     # Development guide
 │
-├── 🚀 start_autonomous.sh           # ⭐ Quick launcher (root)
-├── 🚀 run_aruco.sh                  # ArUco launcher
-├── 🚀 aruco_menu.sh                 # ArUco menu
+├── � scripts/                      # Utility scripts
+│   ├── run_rover.sh                 # ⭐ Main launcher
+│   ├── send_char.sh                 # Send BT command
+│   └── setup_bluetooth.sh           # BT setup
 │
-├── 🐍 generate_aruco.py             # Generate markers
-├── 🐍 view_log.py                   # Log viewer
+├── � firmware/                     # Robot firmware
+│   ├── stm32/                       # STM32 code
+│   └── arduino/                     # Arduino code
 │
-├── 📖 README.md                     # This file (main entry)
-├── 📖 README_ARUCO.md               # ArUco docs
-├── 📖 ARUCO_COMPLETE_GUIDE.md       # Complete ArUco guide
-└── ...                              # Other docs
+├── 📖 README.md                     # This file
+└── 📄 CMakeLists.txt                # Build configuration
 ```
 
 ---
 
-## 🎯 Recommended Workflow
+## 🎯 Development Workflow
 
 ### For First-Time Users:
 
-1. **Read System Overview**
+1. **Clone & Build**
+
    ```bash
-   less autonomous_system/SYSTEM_OVERVIEW.md
+   git clone https://github.com/irsyad-a/ArUco-Detec-Autonomous.git
+   cd ArUco-Detec-Autonomous
+   mkdir build && cd build
+   cmake ..
+   make autonomous_rover -j$(nproc)
    ```
 
-2. **Generate Markers**
-   ```bash
-   python3 generate_aruco.py
-   ```
-   Print 5-10 markers (minimal 5x5 cm)
+2. **Test dengan Webcam**
 
-3. **Setup IP Camera** (atau gunakan webcam)
    ```bash
-   cd autonomous_system
-   ./config_ip_camera.sh
+   ./autonomous_rover
    ```
 
-4. **Test Basic Detection**
-   ```bash
-   ./run_aruco.sh
-   ```
-   Pastikan marker terdeteksi dengan baik
+3. **Configure untuk Robot**
 
-5. **Try Autonomous Mode** ⭐
    ```bash
-   ./start_autonomous.sh
-   # atau: cd autonomous_system && ./run_autonomous.sh
+   # Edit config/rover_config.yaml
+   # Setup Bluetooth (jika menggunakan HC-05)
+   ../scripts/setup_bluetooth.sh
    ```
-   Ikuti instruksi di Navigation Panel!
+
+4. **Read Documentation**
+   - `docs/ROVER_QUICK_START.md` - Quick start guide
+   - `docs/ROVER_INTEGRATION.md` - Integration details
+   - `docs/STM32_INTEGRATION.md` - Hardware integration
 
 ### For Developers:
 
-1. **Read source code:**
-   - `src/autonomous_aruco.cpp` - Main logic
-   - Study the `AutonomousNavigator` class
-   - Understand state machine
+1. **Understand Architecture:**
 
-2. **Modify parameters:**
-   ```cpp
-   float centerThreshold = 80.0f;
-   float minMarkerSize = 120.0f;
+   - `src/autonomous_rover.cpp` - Main state machine & logic
+   - `src/robot_bridge.cpp` - Hardware abstraction layer
+   - `src/path_planner.cpp` - A\* pathfinding algorithm
+   - `src/obstacle_detector.cpp` - Obstacle detection module
+
+2. **Modify Parameters:**
+
+   ```yaml
+   # Edit config/rover_config.yaml
+   line_following:
+     white_line:
+       h_min: 0
+       s_min: 0
+       v_min: 200
    ```
 
-3. **Compile & test:**
+3. **Build & Test:**
+
    ```bash
    cd build
-   cmake .. && make
-   ./autonomous_aruco
+   make autonomous_rover -j$(nproc)
+   ./autonomous_rover
    ```
 
-4. **Contribute improvements!**
+4. **Debug:**
+
+   ```bash
+   # Enable verbose logging
+   ./autonomous_rover --verbose
+
+   # Check logs
+   tail -f autonomous_navigation_log.txt
+   ```
 
 ---
 
 ## 🐛 Troubleshooting
 
+### Issue: Camera tidak terbuka
+
+**Solution:**
+
+```bash
+# 1. Check camera device
+ls -l /dev/video*
+
+# 2. Test dengan v4l2
+v4l2-ctl --list-devices
+
+# 3. Try different camera index
+./autonomous_rover 0  # atau 1, 2, dst
+```
+
 ### Issue: IP Camera tidak connect
 
 **Solution:**
+
 ```bash
-# 1. Cek koneksi
-ping IP_HP_ANDA
+# 1. Check network connectivity
+ping <IP_CAMERA>
 
 # 2. Test di browser
-firefox http://IP_HP:8080/video
+firefox http://<IP>:8080/video
 
-# 3. Coba URL alternatif
-./autonomous_aruco "http://IP:8080/videofeed"
+# 3. Try alternative URL
+./autonomous_rover http://<IP>:8080/videofeed
 ```
 
-### Issue: Marker tidak terdeteksi
+### Issue: Line tidak terdeteksi
 
 **Solution:**
-- Print marker dengan quality bagus (hitam pekat, putih bersih)
-- Tambah cahaya di ruangan
-- Jarak 20-200 cm dari marker
-- Pastikan marker tidak terlipat/rusak
+
+- Sesuaikan HSV threshold di `config/rover_config.yaml`
+- Pastikan pencahayaan cukup terang dan merata
+- Test dengan debug mode: `./autonomous_rover --debug`
+- Check HSV values: Window "HSV Adjustments"
 
 ### Issue: Compile error
 
 **Solution:**
+
 ```bash
-# Install dependencies
-sudo apt-get install -y libopencv-dev libopencv-contrib-dev
+# Install all dependencies
+sudo apt-get install -y libopencv-dev libopencv-contrib-dev \
+    cmake g++ build-essential espeak libespeak-dev
 
 # Clean rebuild
 cd build
 rm -rf *
 cmake ..
-make
+make autonomous_rover -j$(nproc)
 ```
 
-### More Help:
+### Issue: Bluetooth tidak connect
 
-Check dokumentasi lengkap di masing-masing README file, atau:
+**Solution:**
 
 ```bash
-./main_menu.sh
-# Pilih opsi 9 (Show Documentation)
+# 1. Check bluetooth device
+ls -l /dev/rfcomm*
+
+# 2. Pair HC-05
+./scripts/setup_bluetooth.sh
+
+# 3. Test connection
+./scripts/send_char.sh w
 ```
+
+### Issue: Robot tidak merespon command
+
+**Solution:**
+
+- Check serial port di `config/rover_config.yaml`
+- Verify baud rate (default: 9600)
+- Test dengan `./scripts/send_char.sh`
+- Check firmware di robot (STM32/Arduino)
 
 ---
 
 ## 💡 Tips & Best Practices
 
-### Untuk Testing:
-- ✅ Mulai dengan webcam sebelum IP camera
-- ✅ Test dengan 2-3 marker dulu
-- ✅ Pencahayaan 300+ lux (cukup terang)
-- ✅ Background putih/kontras
-- ✅ Print marker minimal 5x5 cm
+### Hardware Setup:
 
-### Untuk Autonomous Mode:
-- 🎯 Gerakan **smooth** dan **perlahan**
-- 👀 Selalu lihat **Navigation Panel**
-- ⏱️ Tunggu sistem **update** sebelum gerakan baru
-- 📷 Jaga kamera **stabil**
+- ✅ Gunakan power supply yang stabil untuk robot
+- ✅ Pastikan HC-05 terpasang dengan benar (TX->RX, RX->TX)
+- ✅ Ground semua komponen ke common ground
+- ✅ Test koneksi serial sebelum integration
 
-### Untuk Development:
-- 🔧 Gunakan `main_menu.sh` untuk compile & test
-- 📝 Check logs untuk debugging
-- 💾 Backup sebelum edit besar
-- 🧪 Test incremental changes
+### Line Following:
+
+- 🎯 Gunakan tape berwarna putih/kuning dengan kontras tinggi
+- 📏 Lebar garis minimal 2-3 cm
+- 💡 Pencahayaan merata, hindari shadow
+- � Background gelap untuk white line, terang untuk yellow line
+
+### ArUco Markers:
+
+- 📐 Print marker minimal 5x5 cm
+- 🖨️ Quality printing (hitam pekat, putih bersih)
+- 📏 Jarak deteksi optimal: 20-100 cm
+- � Pastikan marker flat (tidak terlipat)
+
+### Development:
+
+- 🔧 Use configuration file untuk parameter tuning
+- 📝 Enable logging untuk debugging
+- 💾 Commit changes incrementally
+- 🧪 Test di simulator sebelum real robot
+- 📊 Monitor decision logs untuk analisis performa
 
 ---
 
 ## 🎓 Learning Resources
 
-### Internal Docs:
-- [autonomous_system/](autonomous_system/) - **Folder khusus autonomous navigation** ⭐
-- [SYSTEM_OVERVIEW.md](autonomous_system/SYSTEM_OVERVIEW.md) - Complete system overview
-- [README_AUTONOMOUS.md](autonomous_system/README_AUTONOMOUS.md) - Autonomous navigation details
-- [ARUCO_COMPLETE_GUIDE.md](ARUCO_COMPLETE_GUIDE.md) - Complete ArUco guide
+### Internal Documentation:
+
+- [docs/ROVER_INTEGRATION.md](docs/ROVER_INTEGRATION.md) - Complete integration guide
+- [docs/ROVER_QUICK_START.md](docs/ROVER_QUICK_START.md) - Quick start guide
+- [docs/STM32_INTEGRATION.md](docs/STM32_INTEGRATION.md) - STM32 programming guide
+- [docs/STM32_ELECTRICAL_GUIDE.md](docs/STM32_ELECTRICAL_GUIDE.md) - Wiring & hardware
+- [docs/PROGRAMMER_NEXT_STEPS.md](docs/PROGRAMMER_NEXT_STEPS.md) - Development guide
 
 ### External Resources:
+
+- [OpenCV Documentation](https://docs.opencv.org/4.x/)
 - [OpenCV ArUco Tutorial](https://docs.opencv.org/4.x/d5/dae/tutorial_aruco_detection.html)
 - [ArUco Original Paper](https://www.uco.es/investiga/grupos/ava/node/26)
-- [Online Marker Generator](https://chev.me/arucogen/)
+- [STM32 HAL Documentation](https://www.st.com/en/embedded-software/stm32cube-mcu-mpu-packages.html)
+- [Serial Communication Guide](https://www.cmrr.umn.edu/~strupp/serial.html)
+
+### Algorithms:
+
+- **A\* Pathfinding**: Path planning untuk navigasi
+- **HSV Color Filtering**: Line detection
+- **Contour Detection**: Obstacle & boundary detection
+- **ArUco Detection**: Marker-based localization
 
 ---
 
-## 🚀 Future Roadmap
+## 🚀 Features & Roadmap
 
-### Planned Features:
-- [ ] Voice guidance (text-to-speech)
-- [ ] Path planning algorithm
-- [ ] 3D pose estimation & mapping
+### ✅ Implemented Features:
+
+- [x] **Line Following** - White & yellow line detection
+- [x] **ArUco Navigation** - Marker detection & tracking
+- [x] **Obstacle Detection** - Black object detection
+- [x] **Boundary Detection** - Edge detection
+- [x] **Voice Guidance** - eSpeak TTS integration
+- [x] **Robot Integration** - Serial/Bluetooth communication
+- [x] **Path Planning** - A\* algorithm implementation
+- [x] **Decision Logging** - CSV logging system
+- [x] **Configuration System** - YAML-based config
+- [x] **Multiple Camera Support** - Webcam, IP cam, video file
+- [x] **YOLO Detection** (Optional) - Object detection with YOLOv5
+
+### 🔄 Planned Improvements:
+
+- [ ] SLAM (Simultaneous Localization and Mapping)
+- [ ] Advanced obstacle avoidance with sensor fusion
 - [ ] Multi-robot coordination
-- [ ] Real robot hardware integration
-- [ ] Web dashboard
-- [ ] Mobile app controller
-- [ ] Obstacle detection & avoidance
-
-### Current Status:
-- [x] Basic ArUco detection ✅
-- [x] IP Camera integration ✅
-- [x] Logging system ✅
-- [x] Autonomous navigation ✅
-- [x] Smart guidance system ✅
-- [x] Dual display interface ✅
+- [ ] Web dashboard untuk monitoring
+- [ ] Mobile app remote control
+- [ ] Machine learning untuk decision making
+- [ ] GPS integration untuk outdoor navigation
+- [ ] ROS2 integration
 
 ---
 
-## 👨‍💻 Development Info
+## 👨‍💻 Technical Details
 
-**Project:** Magang Computer Vision System  
-**Version:** 2.0.0  
-**Last Updated:** November 2025  
-**Developed by:** ICAD Team  
+**Repository:** [irsyad-a/ArUco-Detec-Autonomous](https://github.com/irsyad-a/ArUco-Detec-Autonomous)  
+**Version:** 3.0.0  
+**Last Updated:** November 15, 2025
 
-**Technologies:**
-- OpenCV 4.x (ArUco, Detection, Processing)
-- C++17 (Main programs)
-- Python 3 (Tools & utilities)
-- CMake (Build system)
-- Bash (Launchers & scripts)
+**Core Technologies:**
+
+- **OpenCV 4.x** - Computer vision library
+- **C++17** - Main programming language
+- **CMake 3.0+** - Build system
+- **eSpeak** - Text-to-speech engine
+- **YAML-CPP** - Configuration parsing
+- **ONNX Runtime** (Optional) - YOLOv5 inference
+
+**Hardware Support:**
+
+- **STM32** - Microcontroller platform
+- **Arduino** - Alternative microcontroller
+- **HC-05** - Bluetooth communication module
+- **Camera** - Webcam, IP camera, or video file
 
 **Platform:**
-- Linux (Ubuntu/Debian)
+
+- **Linux** (Ubuntu/Debian)
 - Tested on: Ubuntu 22.04 LTS
 
 ---
 
-## 🙏 Credits & Acknowledgments
+## 🙏 Acknowledgments
 
-**Special Thanks:**
-- OpenCV community untuk library yang powerful
-- ArUco developers untuk marker system
-- IP Webcam app developers
-- All contributors & testers
+**Libraries & Tools:**
+
+- OpenCV - Computer vision foundation
+- ArUco - Fiducial marker system
+- eSpeak - Open source TTS engine
+- ONNX Runtime - ML inference engine
+
+**Resources:**
+
+- OpenCV documentation & tutorials
+- ArUco research papers
+- STM32 HAL libraries
+- Community contributions
 
 ---
 
 ## 📄 License
 
-Educational use only. Free to use for learning and research purposes.
+MIT License - Free to use for educational and commercial purposes.
+
+See [LICENSE](LICENSE) file for details.
 
 ---
 
-## 📞 Support & Contact
+## 📞 Support & Issues
 
 **Need Help?**
 
-1. ✅ Check [SYSTEM_OVERVIEW.md](SYSTEM_OVERVIEW.md)
-2. ✅ Read program-specific README
-3. ✅ Look at Troubleshooting section
-4. ✅ Check log files for errors
+1. ✅ Check [docs/ROVER_QUICK_START.md](docs/ROVER_QUICK_START.md)
+2. ✅ Read [docs/ROVER_INTEGRATION.md](docs/ROVER_INTEGRATION.md)
+3. ✅ Look at Troubleshooting section above
+4. ✅ Check log files: `build/autonomous_navigation_log.txt`
 
 **Found a Bug?**
-- Check logs: `build/*_log.txt`
-- Try clean rebuild: `cd build && rm -rf * && cmake .. && make`
+
+- Open an issue on GitHub: [Issues](https://github.com/irsyad-a/ArUco-Detec-Autonomous/issues)
+- Include log files and error messages
+- Describe steps to reproduce
+
+**Want to Contribute?**
+
+- Fork the repository
+- Create feature branch
+- Submit pull request
+- Follow coding standards
 
 ---
 
-## 🎊 Get Started Now!
+## 🎊 Quick Start Summary
 
-Ready to try the **Autonomous Navigation System**?
+### Get Started in 3 Steps:
 
 ```bash
-# Quick start (3 steps):
-python3 generate_aruco.py          # 1. Generate markers
-cd autonomous_system               # 2. Masuk ke folder autonomous
-./config_ip_camera.sh              # 3. Setup camera (atau skip, gunakan webcam)
-./run_autonomous.sh                # 4. Launch!
+# 1. Clone & Build
+git clone https://github.com/irsyad-a/ArUco-Detec-Autonomous.git
+cd ArUco-Detec-Autonomous
+./scripts/run_rover.sh
+
+# 2. Configure (optional)
+nano config/rover_config.yaml
+
+# 3. Run!
+./scripts/run_rover.sh
 ```
 
-**Or use quick launcher from root:**
+### With IP Camera:
 
 ```bash
-./start_autonomous.sh
+# Setup IP Webcam app on Android
+./scripts/run_rover.sh http://192.168.1.100:8080/video
 ```
 
-**Or use the main menu:**
+### Integration dengan Robot:
 
 ```bash
-cd autonomous_system
-./main_menu.sh
+# Setup Bluetooth
+./scripts/setup_bluetooth.sh
+
+# Test command
+./scripts/send_char.sh w
+
+# Run autonomous
+./scripts/run_rover.sh
 ```
 
 ---
 
-## 🌟 Highlights
+## 🌟 Key Features Highlight
 
-### ⭐ NEW: Autonomous Navigation System
+### 🤖 Autonomous Navigation
 
-**Paling recommended untuk dicoba!**
+- **Line Following** dengan white/yellow line detection
+- **ArUco Markers** untuk waypoint navigation
+- **Obstacle Avoidance** dengan real-time detection
+- **Smart Decision Making** dengan state machine
 
-```bash
-./run_autonomous.sh
-```
+### 🔧 Flexible Integration
 
-- Semi-autonomous robot simulation
-- Smart navigation guidance
-- Real-time target tracking
-- Intuitive dual-window interface
+- **Multiple Camera Sources** - Webcam, IP camera, video file
+- **Serial/Bluetooth Support** - HC-05 integration ready
+- **YAML Configuration** - Easy parameter tuning
+- **Modular Architecture** - Easy to extend
 
-**Perfect untuk:**
-- 🎓 Learning autonomous systems
-- 🤖 Robot navigation research
-- 🎯 ArUco marker applications
-- 📱 Computer vision projects
+### 📊 Monitoring & Debug
+
+- **Real-time Logging** - CSV decision logs
+- **Voice Feedback** - eSpeak TTS notifications
+- **Debug Windows** - HSV tuning, contour display
+- **Performance Metrics** - FPS, decision timing
 
 ---
 
-## 🎯 Quick Command Reference
+## 🎯 Command Reference
 
 ```bash
-# Quick Launch (from root)
-./start_autonomous.sh                    # ⭐ Autonomous navigation
+# Build & Run
+./scripts/run_rover.sh                    # ⭐ Main launcher
+./scripts/run_rover.sh <camera_url>       # With IP camera
 
-# Main Menu
-cd autonomous_system && ./main_menu.sh   # Menu dengan semua pilihan
-
-# Launch Programs
-./run_aruco.sh                           # Basic ArUco detection
-cd autonomous_system && ./run_autonomous.sh  # Autonomous navigation
-
-# Tools
-cd autonomous_system && ./config_ip_camera.sh  # Configure IP camera
-python3 generate_aruco.py                      # Generate markers
-python3 view_log.py                            # View logs
-
-# Build
+# Build Only
 cd build
-cmake .. && make                         # Compile all
-make autonomous_aruco                    # Compile specific
+cmake ..                                  # Configure
+make autonomous_rover -j$(nproc)          # Compile
 
 # Direct Run
 cd build
-./autonomous_aruco                       # IP camera (default)
-./autonomous_aruco 0                     # Webcam
-./autonomous_aruco "URL"                 # Custom camera
+./autonomous_rover                        # Default camera
+./autonomous_rover 0                      # Webcam
+./autonomous_rover /path/to/video.mp4     # Video file
+./autonomous_rover <camera_url>           # IP camera
+
+# Bluetooth/Serial
+./scripts/setup_bluetooth.sh              # Setup HC-05
+./scripts/send_char.sh <command>          # Send command (w/a/s/d)
+
+# Configuration
+nano config/rover_config.yaml             # Edit config
+cp config/rover_config_examples.yaml config/rover_config.yaml
 ```
 
 ---
 
 ## 📚 Documentation Index
 
-| Document | Description | Location |
-|----------|-------------|----------|
-| `README.md` | **This file** - Main entry point | Root |
-| **`autonomous_system/`** | **📁 Folder khusus autonomous** | **Root** ⭐ |
-| `SYSTEM_OVERVIEW.md` | Complete system overview & comparison | autonomous_system/ |
-| `README_AUTONOMOUS.md` | Autonomous navigation full guide | autonomous_system/ |
-| `AUTONOMOUS_QUICK_START.md` | Autonomous quick start (3 steps) | autonomous_system/ |
-| `GETTING_STARTED.txt` | Getting started guide | autonomous_system/ |
-| `README_ARUCO.md` | Basic ArUco detection guide | Root |
-| `ARUCO_QUICK_START.md` | ArUco quick start | Root |
-| `ARUCO_COMPLETE_GUIDE.md` | Complete ArUco reference | Root |
-| `README_FACE_BLUR.md` | Face blur detection guide | Root |
-| `LOGGING_FEATURE.md` | Logging system documentation | Root |
+| Document                                                         | Description                        |
+| ---------------------------------------------------------------- | ---------------------------------- |
+| **[README.md](README.md)**                                       | **Main documentation (this file)** |
+| [docs/ROVER_INTEGRATION.md](docs/ROVER_INTEGRATION.md)           | Complete integration guide         |
+| [docs/ROVER_QUICK_START.md](docs/ROVER_QUICK_START.md)           | Quick start guide                  |
+| [docs/STM32_INTEGRATION.md](docs/STM32_INTEGRATION.md)           | STM32 programming & setup          |
+| [docs/STM32_ELECTRICAL_GUIDE.md](docs/STM32_ELECTRICAL_GUIDE.md) | Wiring & electrical setup          |
+| [docs/PROGRAMMER_NEXT_STEPS.md](docs/PROGRAMMER_NEXT_STEPS.md)   | Development guide                  |
 
 ---
 
 <div align="center">
 
-## 🎉 Selamat Mencoba!
+## 🎉 Ready to Start!
 
-**Made with ❤️ by ICAD Team**
+**Autonomous Rover System**
 
-*Computer Vision • Autonomous Systems • ArUco Detection*
+_Line Following • ArUco Navigation • Obstacle Avoidance_
 
 ---
 
-⭐ **Recommended:** Try the Autonomous Navigation System first!
+### Quick Start
 
 ```bash
-./run_autonomous.sh
+git clone https://github.com/irsyad-a/ArUco-Detec-Autonomous.git
+cd ArUco-Detec-Autonomous
+./scripts/run_rover.sh
 ```
 
 ---
 
-*Last Updated: November 2025 | Version 2.0.0*
+**Made with ❤️ using OpenCV & C++**
+
+[![GitHub](https://img.shields.io/badge/GitHub-irsyad--a-blue?logo=github)](https://github.com/irsyad-a/ArUco-Detec-Autonomous)
+[![Issues](https://img.shields.io/badge/Issues-Report-red?logo=github)](https://github.com/irsyad-a/ArUco-Detec-Autonomous/issues)
+[![Pull Requests](https://img.shields.io/badge/PRs-Welcome-green?logo=github)](https://github.com/irsyad-a/ArUco-Detec-Autonomous/pulls)
+
+_Last Updated: November 15, 2025 | Version 3.0.0_
 
 </div>
-
